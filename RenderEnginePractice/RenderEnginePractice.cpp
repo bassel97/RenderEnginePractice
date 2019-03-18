@@ -1,33 +1,23 @@
 // RenderEnginePractice.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 #include <iostream>
-#include "Matrix4x4.h"
+#include "Math/Matrix.h"
+#include "Math/Vector.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello Render Engine!\n";
 
-	Matrix4x4 matA('A');
+	Vector<3> vec3;
+	vec3[0] = 1;
+	vec3[1] = 2;
+	vec3[2] = 3;
+	cout << vec3 << endl;
 
-	matA[2][3] = 30;
+	Matrix<3,3> mat3x3 = vec3 * vec3;
 
-	Matrix4x4 matZ('Z');
-	matZ = matA;
+	cout << mat3x3;
 
-	cout << matZ;
-
-	cout << matA[2][3] << endl;
-
-	cout << matA << endl;
-
-	Matrix4x4 matC;
-	matC = matA + matZ;
-
-	//matA = matC;
-
-	cout << matC << endl;
 
 
 	return 1;
