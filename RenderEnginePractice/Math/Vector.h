@@ -1,17 +1,23 @@
 #pragma once
 #include <iostream>
 
+/*	Vector class with all its member variables	*/
+
 template<int rows, int cols>
 class Matrix;
 
 template<int rows>
 class Vector
 {
-	float vec[rows];
 
 public:
+	
+	float vec[rows];
+
+	const int rowSize = rows;
 
 	//==============================================Cons|Dest==============================================//
+	
 	Vector()
 	{
 		for (int i = 0; i < rows; i++)
@@ -32,9 +38,25 @@ public:
 	{
 	}
 
+	//========================================Matrix Operations============================================//
+
+	Matrix<1, rows> transpose() {
+		Matrix<1, rows> transposed;
+		for (int i = 0; i < rows; i++)
+		{
+			transposed[i][0] = vec[i];
+		}
+		return transposed;
+	}
 
 	//==============================================Operators==============================================//
+	
 	float& operator[](const int i)
+	{
+		return vec[i];
+	}
+
+	const float& operator[](const int i) const
 	{
 		return vec[i];
 	}
@@ -89,6 +111,7 @@ public:
 	}
 
 	//==============================================friend funcs==============================================//
+	
 	friend std::ostream & operator<<(std::ostream & out, Vector & vector)
 	{
 		for (int i = 0; i < rows; i++)
